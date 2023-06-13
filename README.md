@@ -1,14 +1,14 @@
-# SC^2-PCR: A Second Order Spatial Compatibility for Efficient and Robust Point Cloud Registration (CVPR 2022)
+# SC^2-PCR++: A Second Order Spatial Compatibility for Efficient and Robust Point Cloud Registration (TPAMI)
 
 PyTorch implementation of the paper:
 
-[SC^2-PCR: A Second Order Spatial Compatibility for Efficient and Robust Point Cloud Registration](https://arxiv.org/abs/2203.14453).
+[SC^2-PCR++: Rethinking the Generation and Selection for Efficient and Robust Point Cloud Registration](https://ieeexplore.ieee.org/document/10115040).
 
-Zhi Chen, [Kun Sun](https://scholar.google.com/citations?user=Ay6kCm4AAAAJ&hl=en), Fan Yang, [Wenbing Tao](https://scholar.google.co.uk/citations?user=jRDPE2AAAAAJ&hl=zh-CN&oi=ao).
+Zhi Chen, [Kun Sun](https://scholar.google.com/citations?user=Ay6kCm4AAAAJ&hl=en), Fan Yang, Lin Guo, [Wenbing Tao](https://scholar.google.co.uk/citations?user=jRDPE2AAAAAJ&hl=zh-CN&oi=ao).
 
 ## Introduction
 
-In this paper, we present a second order spatial compatibility (SC^2) measure based method for efficient and robust point cloud registration (PCR), called SC^2-PCR. Firstly, we propose a second order spatial compatibility (SC^2) measure to compute the similarity between correspondences. It considers the global compatibility instead of local consistency, allowing for more distinctive clustering between inliers and outliers at early stage. Based on this measure, our registration pipeline employs a global spectral technique to find some reliable seeds from the initial correspondences. Then we design a two-stage strategy to expand each seed to a consensus set based on the SC^2 measure matrix. Finally, we feed each consensus set to a weighted SVD algorithm to generate a candidate rigid transformation and select the best model as the final result. Our method can guarantee to find a certain number of outlier-free consensus sets using fewer samplings, making the model estimation more efficient and robust. In addition, the proposed SC^2 measure is general and can be easily plugged into deep learning based frameworks. Extensive experiments are carried out to investigate the performance of our method.
+Outlier removal is a critical part of feature-based point cloud registration. In this paper, we revisit the model generation and selection of the classic RANSAC approach for fast and robust point cloud registration. For the model generation, we propose a second order spatial compatibility (SC^2) measure to compute the similarity between correspondences. It takes into account the global compatibility instead of local consistency, allowing for more distinctive clustering between inliers and outliers at early stage. The proposed measure can promise to find a certain number of outlier-free consensus sets using fewer samplings, making the model generation more efficient. For the model selection, we propose a new Feature and Spatial consistency constrained Truncated Chamfer Distance (FS-TCD) metric for evaluating the generated models. It simultaneously considers the alignment quality, the feature matching properness and spatial consistency constraint, so that the correct model can be selected even if the inlier rate of the putative correspondence set is extremely low. Extensive experiments are carried out to investigate the performance of our method. In addition, we also experimentally prove that the proposed SC$^2$ measure and the FS-TCD metric are general and can be easily plugged into deep learning based frameworks.
 
 ![](figures/pipeline.png)
 
@@ -113,17 +113,18 @@ We evaluate SC^2-PCR on the standard 3DMatch benchmarks:
 
 |    Benchmark   | RR(%) | RE(°) |TE(cm) | IP(%) | IR(%) | F1(%) |
 |:---------------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-|  3DMatch+FPFH  | 83.98 | 2.18  | 6.56  | 72.48 | 78.33 | 75.10 |
-|  3DMatch+FCGF  | 93.28 | 2.08  | 6.55  | 78.94 | 86.39 | 82.20 |
+|  3DMatch+FPFH  | 87.18 | 2.10  | 6.64  | 76.49 | 81.72 | 78.82 |
+|  3DMatch+FCGF  | 94.15 | 2.04  | 6.50  | 80.57 | 87.69 | 83.71 |
 
 ### 3DMatch
 
 We evaluate SC^2-PCR on the standard 3DLoMatch benchmarks:
 
 |       Benchmark     | RR(%) | RE(°) |TE(cm) | IP(%) | IR(%) | F1(%) |
-|:--------------------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-| 3DLoMatch+FCGF      | 57.83 | 3.77  | 10.46 | 44.87 | 53.69 | 48.38 |
-| 3DLoMatch+Predator  | 69.46 | 3.46  | 9.58  | 56.98 | 67.47 | 61.08 |
+|:------------------------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+|      3DLoMatch+FCGF     | 61.15 | 3.72  | 10.56 | 47.12 | 56.52 | 50.85 |
+|    3DLoMatch+Predator   | 71.59 | 3.45  | 9.61  | 59.61 | 70.17 | 63.73 |
+| 3DLoMatch+GeoTransformer| 78.72 | 2.96  | 8.56  | 64.80 | 77.02 | 69.55 |
 
 ### KITTI odometry
 
@@ -131,17 +132,19 @@ We evaluate SC^2-PCR on the standard KITTI benchmarks:
 
 |    Benchmark   | RR(%) | RE(°) |TE(cm) | IP(%) | IR(%) | F1(%) |
 |:---------------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-|    KITTI+FPFH  | 99.64 | 0.32  | 7.23  | 93.63 | 95.89 | 94.63 |
-|    KITTI+FCGF  | 98.20 | 0.33  | 20.95 | 82.01 | 91.03 | 85.90 |
+|    KITTI+FPFH  | 99.64 | 0.32  | 7.19  | 94.07 | 96.19 | 95.00 |
+|    KITTI+FCGF  | 98.56 | 0.32  | 20.61 | 82.17 | 91.23 | 86.09 |
+
 
 ## Citation
 
 ```bibtex
-@article{chen2022sc,
-  title={SC\^{} 2-PCR: A Second Order Spatial Compatibility for Efficient and Robust Point Cloud Registration},
-  author={Chen, Zhi and Sun, Kun and Yang, Fan and Tao, Wenbing},
-  journal={arXiv preprint arXiv:2203.14453},
-  year={2022}
+@article{chen2023sc,
+  title={SC $\^{}$\{$2$\}$ $-PCR++: Rethinking the Generation and Selection for Efficient and Robust Point Cloud Registration},
+  author={Chen, Zhi and Sun, Kun and Yang, Fan and Guo, Lin and Tao, Wenbing},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year={2023},
+  publisher={IEEE}
 }
 ```
 
@@ -151,4 +154,5 @@ We evaluate SC^2-PCR on the standard KITTI benchmarks:
 - [FCGF](https://github.com/chrischoy/FCGF)
 - [DGR](https://github.com/chrischoy/DeepGlobalRegistration)
 - [PREDATOR](https://github.com/prs-eth/OverlapPredator)
+- GeoTransformer(https://github.com/qinzheng93/GeoTransformer)
 

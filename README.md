@@ -14,7 +14,7 @@ Outlier removal is a critical part of feature-based point cloud registration. In
 
 ## Requirements
 
-If you are using conda, you may configure SC2-PCR as:
+If you are using conda, you may configure SC2-PCR++ as:
 
     conda env create -f environment.yml
     conda activate SC2_PCR

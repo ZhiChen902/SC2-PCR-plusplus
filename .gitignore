@@ -1,0 +1,9 @@
+data/*
+dataset/*
+logs/*
+config_json_Ns/
+multiway/*
+test_Ns_3DLoMatch_fcgf.sh
+test_Ns_3DLoMatch_predator.sh
+test_Ns_3DMatch_fcgf.sh
+test_Ns_3DMatch_fpfh.sh

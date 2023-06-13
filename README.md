@@ -50,7 +50,11 @@ Downsample and extract FPFH and FCGF descriptors for each frame of the 3DMatch t
 Use the following command for testing.
 
 ```bash
-python ./test_3DMatch.py --config_path config_json/config_3DMatch.json
+python ./test_3DMatch.py --config_path config_json/config_3DMatch_FPFH.json
+```
+or
+```bash
+python ./test_3DMatch.py --config_path config_json/config_3DMatch_FCGF.json
 ```
 
 The CUDA_DEVICE and basic parameters can be changed in the json file.
@@ -74,7 +78,11 @@ FPFH and FCGF descriptors can be prepared in the same way as testing 3DMatch. If
 Use the following command for testing.
 
 ```bash
-python ./test_3DLoMatch.py --config_path config_json/config_3DLoMatch.json
+python ./test_3DLoMatch.py --config_path config_json/config_3DLoMatch_FCGF.json
+```
+or
+```bash
+python ./test_3DLoMatch.py --config_path config_json/config_3DLoMatch_Predator.json
 ```
 
 ## KITTI odometry
@@ -102,7 +110,11 @@ Downsample and extract FPFH and FCGF descriptors for each frame of the KITTI tes
 Use the following command for testing.
 
 ```bash
-python ./test_KITTI.py --config_path config_json/config_KITTI.json
+python ./test_KITTI.py --config_path config_json/config_KITTI_FPFH.json
+```
+or
+```bash
+python ./test_KITTI.py --config_path config_json/config_KITTI_FCGF.json
 ```
 
 ## Results
@@ -154,5 +166,5 @@ We evaluate SC^2-PCR on the standard KITTI benchmarks:
 - [FCGF](https://github.com/chrischoy/FCGF)
 - [DGR](https://github.com/chrischoy/DeepGlobalRegistration)
 - [PREDATOR](https://github.com/prs-eth/OverlapPredator)
-- GeoTransformer(https://github.com/qinzheng93/GeoTransformer)
+- [GeoTransformer](https://github.com/qinzheng93/GeoTransformer)
 

@@ -1,1 +1,23 @@
-
+{
+    "CUDA_Devices": "1",
+    "num_iterations": 10,
+    "dataset": "KITTI",
+    "ratio": 0.2,
+    "k1": 40,
+    "k2": 30,
+    "data_path": "data/KITTI/fpfh_test",
+    "descriptor": "fpfh",
+    "inlier_threshold": 0.6,
+    "sigma_d": 0.6,
+    "d_thre": 0.1,
+    "downsample": 0.3,
+    "re_thre": 5,
+    "te_thre": 60,
+    "num_node": 8000,
+    "use_mutual": false,
+    "max_points": 8000,
+    "nms_radius": 0.3,
+    "FS_TCD_thre": 0.1,
+    "relax_match_num": 100,
+    "NS_by_IC": 50
+}

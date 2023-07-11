@@ -89,7 +89,7 @@ python ./test_3DLoMatch.py --config_path config_json/config_3DLoMatch_Predator.j
 
 ### Data preparation
 
-Downsample and extract FPFH and FCGF descriptors for each frame of the KITTI test dataset. The raw point clouds can be download from [KITTI Odometry website.](http://www.cvlibs.net/datasets/kitti/eval_odometry.php). For your convenience, [here](https://drive.google.com/drive/folders/1sxkHYjWHhSUE3IcvmZ2p1ziw1LqJqqfc?usp=sharing) we provide the pre-computed FPFH and FCGF descriptors for the KITTI test set.
+Downsample and extract FPFH and FCGF descriptors for each frame of the KITTI test dataset. The raw point clouds can be download from [KITTI Odometry website.](http://www.cvlibs.net/datasets/kitti/eval_odometry.php). For your convenience, we provide the pre-computed FPFH and FCGF descriptors for the KITTI test set at [google driver](https://drive.google.com/drive/folders/1sxkHYjWHhSUE3IcvmZ2p1ziw1LqJqqfc?usp=sharing), or [Baidu NetDisk](https://pan.baidu.com/s/12Xop3B03M3TqcoQSz03D3w) (Extract code: yj5r).
 
 ```
 --data--KITTI                
